@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  dev-container:
+    image: paidax/openai:0.1
+    command: tail -f /dev/null

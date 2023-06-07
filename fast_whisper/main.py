@@ -125,7 +125,7 @@ async def asr(items: Audio):
 @app.get("/health")
 async def health_check():
     try:
-        log.info("health 200")
+        logger.info("health 200")
         return status.HTTP_200_OK
 
     except:
