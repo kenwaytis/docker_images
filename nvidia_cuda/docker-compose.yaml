@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   dev-container:
-    image: nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
+    image: paidax/dev-containers:cuda12.1-py3.11
     ports:
       - 9527:9527
     command: tail -f /dev/null
