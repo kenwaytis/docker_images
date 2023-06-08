@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  fastapi_test:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/fastapi:0.1
+    container_name: fastapi_test
+    ports:
+      - 9527:9527
+    volumes:
+      - $PWD:/home/fastapi
+    command: tail -f /dev/null
