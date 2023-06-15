@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  dev-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/whisper-finetune:0.1
+    container_name: whisper-finetune
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+    - /media/paidax/Data/database/sound/xunfei/vail:/mnt
+    command: tail -f /dev/null

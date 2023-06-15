@@ -4,6 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      image: paidax/openai:0.1
+    image: paidax/openai:0.1
     container_name: openai_api
     command: tail -f /dev/null
