@@ -16,3 +16,4 @@ services:
     volumes:
     - /media/paidax/Data/database/sound/xunfei/vail:/mnt
     command: tail -f /dev/null
+    
