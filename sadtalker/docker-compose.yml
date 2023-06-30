@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  dev-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/sadtalker:0.4.1
+    container_name: sadtalker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+    - ./checkpoints:/home/SadTalker/checkpoints
+    - ./gfpgan/weights:/home/SadTalker/gfpgan/weights
+    command: tail -f /dev/null
+    

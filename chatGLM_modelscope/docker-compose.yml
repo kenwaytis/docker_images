@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  chatGLM:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/chatglm-6b-0.1
+    container_name: chatglm
+    runtime: nvidia
+    ports:
+      - 9523:9523
+    command: uvicorn main:app --port 9523 --host 0.0.0.0

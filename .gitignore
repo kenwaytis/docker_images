@@ -2,3 +2,5 @@ fast_whisper/whisper-large-v2-finetune-ct2/*
 __pycache__/
 .vscode/
 openai/main.py
+sadtalker/checkpoints/
+sadtalker/gfpgan/

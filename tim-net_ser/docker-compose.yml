@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  SER:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/tim-net-ser:1.2
+    container_name: ser
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always
+    ports:
+      - 6565:6565
+    command: uvicorn service:app --host 0.0.0.0 --port 6565
+    
