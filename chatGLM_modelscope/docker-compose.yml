@@ -9,4 +9,4 @@ services:
     runtime: nvidia
     ports:
       - 9523:9523
-    command: uvicorn main:app --port 9523 --host 0.0.0.0
+    command: tail -f /dev/null

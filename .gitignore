@@ -1,4 +1,4 @@
-fast_whisper/whisper-large-v2-finetune-ct2/*
+*whisper-large-v2*
 __pycache__/
 .vscode/
 openai/main.py

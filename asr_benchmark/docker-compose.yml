@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  ASRBenchmark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/asr_benchmark:0.1
+    container_name: asr_benchmark
+    volumes:
+      - /media/paidax/Data/database/sound/THCHS-30/data_thchs30/data:/mnt/asr_data
+    command: tail -f /dev/null
+    

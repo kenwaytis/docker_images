@@ -4,6 +4,10 @@ WORKDIR /modelscope/pytorch
 RUN pip install --no-cache-dir \
     loguru \
     pydub \
+    protobuf==3.20.0 \
+    transformers==4.27.1 \
+    icetk \
+    cpm_kernels \
     fastapi[all] && \
     rm -rf /root/.cache/pip/*
 
