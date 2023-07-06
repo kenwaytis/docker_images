@@ -1,0 +1,1 @@
+The chatGLM2-6b model provided by the ModelScope community. Utilizing  the ModelScope framework, it exposes the inference service using  fastAPI. Not recommended for use. It is advised to use the original  chatGLM2-6B model.

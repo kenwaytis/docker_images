@@ -1,0 +1,1 @@
+Here is the code for testing Character Error Rate (CER) for different  models on the THCHS-30 dataset. Please note that this code is specific  to the THCHS-30 dataset, and further updates for different datasets will be provided in the future.

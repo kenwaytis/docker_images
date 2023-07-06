@@ -29,7 +29,6 @@ Then, refer to the README.md in the project or the command specified in docker-c
 - ASR (fasterWhisper, FunASR)
 - ASR Benchmark Testing
 - chatGLM2-6B (Modelscope Launch, Source Code Launch)
-- Face Recognition, Face Detection (Compreface)
 - Translation (DeeplX)
 - Development Image (Basic image used for development)
 - Facial Expression Recognition (FER)
@@ -37,11 +36,6 @@ Then, refer to the README.md in the project or the command specified in docker-c
 - ASR Fine-tuning
 
 ### Service Descriptions:
-
-#### compreface
-
-[Compreface github](https://github.com/exadel-inc/CompreFace)
-Open-source facial detection service that provides API interfaces within a container. To use this service, you will need the corresponding language SDK and an API key for accessing the service.
 
 #### deeplx
 

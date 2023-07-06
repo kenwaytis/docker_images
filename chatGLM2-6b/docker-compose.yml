@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  chatGLM:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paidax/chatglm2-6b-0.1
+    container_name: chatglm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - 8000:8000
+    command: python openai_api.py
