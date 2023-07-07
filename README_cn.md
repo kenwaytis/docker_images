@@ -27,21 +27,15 @@ docker build -t res/name:tag .
 ### 目前包括的AI服务有：
 
 - ASR（fasterWhisper、FunASR）
-
 - ASR Benchmark测试
-
 - chatGLM2-6B（modelscope启动、源代码启动）
-- 人脸识别 人脸检测（Compreface）、翻译（DeeplX）
+- 翻译（DeeplX）
 - 开发镜像（我用于开发的基础镜像）
 - 人脸表情识别（FER）
 - 虚拟人（SadTalker）
 - ASR微调
 
 ### 服务说明
-
-#### compreface
-
-开源人脸检测服务，提供容器内的API接口。要使用此服务，您需要相应的语言SDK和访问服务的API密钥。
 
 #### deeplx
 
