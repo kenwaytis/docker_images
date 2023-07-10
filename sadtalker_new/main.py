@@ -65,7 +65,7 @@ async def predict_image(items:Words):
     coeff_path = audio_to_coeff.generate(batch, save_dir, 0, ref_pose_coeff_path)
 
     data = get_facerender_data(coeff_path, crop_pic_path, first_coeff_path, audio_path, 
-                                2, None, None, None,
+                                10, None, None, None,
                                 expression_scale=1, still_mode=True, preprocess="full")
     video_path = animate_from_coeff.generate(data, save_dir, pic_path, crop_info, \
                                 enhancer="gfpgan", background_enhancer=None, preprocess="full")
