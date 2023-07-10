@@ -5,7 +5,7 @@ from loguru import logger
 from time import strftime
 from src.utils.preprocess import CropAndExtract
 from src.test_audio2coeff import Audio2Coeff  
-from src.facerender.animate import AnimateFromCoeff
+from src.facerender.pirender_animate import AnimateFromCoeff_PIRender
 from src.generate_batch import get_data
 from src.generate_facerender_batch import get_facerender_data
 from src.utils.init_path import init_path
@@ -16,11 +16,12 @@ import os, sys
 import base64
 
 tts_service = "http://192.168.100.8:9566/tts"
+pic_path ="sadtalker_default.jpeg"
 sadtalker_paths = init_path("./checkpoints", os.path.join("/home/SadTalker", 'src/config'), "256", False, "full")
 
 preprocess_model = CropAndExtract(sadtalker_paths, "cuda")
 audio_to_coeff = Audio2Coeff(sadtalker_paths, "cuda")
-animate_from_coeff = AnimateFromCoeff(sadtalker_paths, "cuda")
+animate_from_coeff = AnimateFromCoeff_PIRender(sadtalker_paths, "cuda")
 
 app = FastAPI()
 
@@ -30,7 +31,6 @@ class Words(BaseModel):
 
 @app.post("/fer", tags=["FER"], summary="Predict emotions in an image", response_description="Emotion detection results")
 async def predict_image(items:Words):
-    pic_path ="webwxgetmsgimg.png"
     save_dir = os.path.join("/home/SadTalker/results", strftime("%Y_%m_%d_%H.%M.%S"))
     """
     从语音服务器获取语音内容
@@ -57,7 +57,6 @@ async def predict_image(items:Words):
 
     first_frame_dir = os.path.join(save_dir, 'first_frame_dir')
     os.makedirs(first_frame_dir, exist_ok=True)
-    #TODO pic_path
     first_coeff_path, crop_pic_path, crop_info =  preprocess_model.generate(pic_path, first_frame_dir, "full", source_image_flag=True)
     ref_eyeblink_coeff_path=None
     ref_pose_coeff_path=None
@@ -66,7 +65,7 @@ async def predict_image(items:Words):
 
     data = get_facerender_data(coeff_path, crop_pic_path, first_coeff_path, audio_path, 
                                 10, None, None, None,
-                                expression_scale=1, still_mode=True, preprocess="full")
+                                expression_scale=1, still_mode=True, preprocess="full",facemodel='pirender')
     video_path = animate_from_coeff.generate(data, save_dir, pic_path, crop_info, \
                                 enhancer="gfpgan", background_enhancer=None, preprocess="full")
     with open(video_path, "rb") as file:
