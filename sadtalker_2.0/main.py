@@ -3,9 +3,10 @@ from pydantic import BaseModel
 from loguru import logger
 
 from time import strftime
+from time import time
 from src.utils.preprocess import CropAndExtract
 from src.test_audio2coeff import Audio2Coeff  
-from src.facerender.animate import AnimateFromCoeff
+from src.facerender.animate_onnx import AnimateFromCoeff
 from src.generate_batch import get_data
 from src.generate_facerender_batch import get_facerender_data
 from src.utils.init_path import init_path
@@ -16,7 +17,7 @@ import os, sys
 import base64
 
 tts_service = "http://192.168.100.8:9566/tts"
-pic_path ="sadtalker_default.jpeg"
+pic_path ="./sadtalker_default.jpeg"
 facerender_batch_size = 10
 sadtalker_paths = init_path("./checkpoints", os.path.join("/home/SadTalker", 'src/config'), "256", False, "full")
 
@@ -67,8 +68,11 @@ async def predict_image(items:Words):
     data = get_facerender_data(coeff_path, crop_pic_path, first_coeff_path, audio_path, 
                                 facerender_batch_size, None, None, None,
                                 expression_scale=1, still_mode=True, preprocess="full")
-    video_path = animate_from_coeff.generate(data, save_dir, pic_path, crop_info, \
+    start_time = time()
+    video_path = animate_from_coeff.generate_deploy(data, save_dir, pic_path, crop_info, \
                                 enhancer="gfpgan", background_enhancer=None, preprocess="full")
+    end_time = time()
+    logger.error(f"time: {end_time-start_time}")
     with open(video_path, "rb") as file:
             # 将视频内容进行 base64 编码
             video_data = base64.b64encode(file.read()).decode("utf-8")

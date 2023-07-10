@@ -21,6 +21,7 @@ RUN git clone https://github.com/Winfredy/SadTalker.git && \
     pip install -r requirements.txt && \
     pip install \ 
     fastapi[all] \
+    onnxruntime-gpu \
     loguru && \
     rm -rf /root/.cache/pip/*  # 清除pip缓存
 

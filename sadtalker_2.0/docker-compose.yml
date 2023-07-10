@@ -7,7 +7,7 @@ services:
       args:
         HTTP_PROXY: ${HTTP_PROXY}
         HTTPS_PROXY: ${HTTPS_PROXY}
-    image: paidax/sadtalker:2.0.2
+    image: paidax/sadtalker:2.1.0
     container_name: sadtalker
     deploy:
       resources:
@@ -20,7 +20,13 @@ services:
       - ./checkpoints:/home/SadTalker/checkpoints
       - ./gfpgan/weights:/home/SadTalker/gfpgan/weights
       - ./main.py:/home/SadTalker/main.py
+      - ./src/demo_onnx.py:/home/SadTalker/src/demo_onnx.py
+      - ./src/GFPGANReconsitution.py:/home/SadTalker/src/GFPGANReconsitution.py
+      - ./src/noise_main.py:/home/SadTalker/src/noise_main.py
+      - ./src/utils/face_enhancer_deploy.py:/home/SadTalker/src/utils/face_enhancer_deploy.py
+      - ./src/facerender/animate_onnx.py:/home/SadTalker/src/facerender/animate_onnx.py
+      - ./src/torch_onnx.py:/home/SadTalker/src/torch_onnx.py
       - ./sadtalker_default.jpeg:/home/SadTalker/sadtalker_default.jpeg
     ports:
       - 10364:10364
-    command: uvicorn main:app --host 0.0.0.0 --port 10364
+    command: tail -f /dev/null
