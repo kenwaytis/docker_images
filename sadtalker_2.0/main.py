@@ -15,8 +15,9 @@ import requests
 import json
 import os, sys
 import base64
+import os
 
-tts_service = "http://192.168.100.8:9566/tts"
+tts_service = os.getenv("TTS_SERVER")
 pic_path ="./sadtalker_default.jpeg"
 facerender_batch_size = 10
 sadtalker_paths = init_path("./checkpoints", os.path.join("/home/SadTalker", 'src/config'), "256", False, "full")

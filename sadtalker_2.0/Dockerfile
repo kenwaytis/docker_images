@@ -1,4 +1,4 @@
-FROM paidax/dev-containers:ubuntu20.04-py3.8-v1.0
+FROM paidax/dev-containers:cuda11.6-py3.8
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY

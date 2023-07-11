@@ -7,7 +7,7 @@ services:
       args:
         HTTP_PROXY: ${HTTP_PROXY}
         HTTPS_PROXY: ${HTTPS_PROXY}
-    image: paidax/sadtalker:2.1.0
+    image: paidax/sadtalker:2.2.0
     container_name: sadtalker
     deploy:
       resources:
@@ -29,4 +29,6 @@ services:
       - ./sadtalker_default.jpeg:/home/SadTalker/sadtalker_default.jpeg
     ports:
       - 10364:10364
+    environment:
+      - TTS_SERVER=http://192.168.100.20:9566/tts
     command: tail -f /dev/null
