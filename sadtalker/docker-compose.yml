@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
     image: paidax/sadtalker:0.4.1
     container_name: sadtalker
     deploy:

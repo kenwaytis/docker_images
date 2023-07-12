@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
     image: paidax/huggingface:1.5
     container_name: huggingface
     deploy:

@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
     image: paidax/chatglm2-6b-0.1
     container_name: chatglm
     deploy:

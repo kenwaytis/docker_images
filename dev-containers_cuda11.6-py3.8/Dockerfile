@@ -2,8 +2,10 @@ FROM nvidia/cuda:11.6.2-runtime-ubuntu20.04
 
 WORKDIR /home
 
-ENV HTTP_PROXY=http://192.168.100.18:7890
-ENV HTTPS_PROXY=http://192.168.100.18:7890
+ARG HTTP_PROXY
+
+ENV HTTP_PROXY=${HTTP_PROXY}
+ENV HTTPS_PROXY=${HTTP_PROXY}
 
 RUN apt update && \
     apt install -y \

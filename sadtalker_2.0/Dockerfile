@@ -1,7 +1,6 @@
 FROM paidax/dev-containers:cuda11.6-py3.8
 
 ARG HTTP_PROXY
-ARG HTTPS_PROXY
 
 ENV HTTP_PROXY=${HTTP_PROXY}
 ENV HTTPS_PROXY=${HTTP_PROXY}
@@ -25,7 +24,12 @@ RUN git clone https://github.com/Winfredy/SadTalker.git && \
     loguru && \
     rm -rf /root/.cache/pip/*  # 清除pip缓存
 
+RUN pip install httpcore==0.15
+
 WORKDIR /home/SadTalker
+
+COPY main.py sadtalker_default.jpeg ./
+COPY src/ src/
 
 ENV HTTP_PROXY=""
 ENV HTTPS_PROXY=""

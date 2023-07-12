@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
     image: paidax/deploy:asr_fasterwhisper_banchmark_aishell
     runtime: nvidia
     restart: always

@@ -1,7 +1,9 @@
 FROM paidax/dev-containers:ubuntu-py3.8-v1.0
 
-ENV HTTP_PROXY=http://192.168.100.18:7890
-ENV HTTPS_PROXY=http://192.168.100.18:7890
+ARG HTTP_PROXY
+
+ENV HTTP_PROXY=${HTTP_PROXY}
+ENV HTTPS_PROXY=${HTTP_PROXY}
 
 RUN pip install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 && \
     git clone https://github.com/yeyupiaoling/Whisper-Finetune.git && \

@@ -4,6 +4,8 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+      args:
+        HTTP_PROXY: ${HTTP_PROXY}
     image: paidax/fastapi:0.1
     container_name: fastapi_test
     ports:
